@@ -1,9 +1,11 @@
 let products = [
     { id:1, name:"Саженцы помидоров", price:1500, category:"plants", img:"images/помидоры.webp" },
     { id:2, name:"Огурцы", price:1200, category:"vegetables", img:"images/огурцы.webp" },
-    { id:3, name:"Яблоня", price:5000, category:"trees", img:"images/tree.jpg" }
-  ];
-  
+    { id:3, name:"Яблоня", price:5000, category:"trees", img:"images/яблоня.webp" },
+    { id:4, name:"Персик", price:5000, category:"trees", img:"images/Персик.webp" },
+    { id:5, name:"Красный перец", price:5000, category:"plants", img:"images/Красный перец.webp" },
+    { id:6, name:"Клубника", price:5000, category:"plants", img:"images/Клубника.webp" }
+]
   let filteredProducts = [...products];
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   
