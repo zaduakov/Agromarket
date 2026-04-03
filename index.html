@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroMarket</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="overlay" onclick="toggleCart()"></div>
+<header>
+  <div class="logo">AgroMarket</div>
+
+  <div class="search">
+    <input id="searchInput" type="text" placeholder="Поиск (помидоры, огурцы...)">
+    <div class="search-suggestions" id="suggestions"></div>
+  </div>
+
+  <div class="cart-btn" onclick="toggleCart()">🛒 (<span id="cartCount">0</span>)</div>
+</header>
+<div class="categories">
+  <span onclick="filterCategory('all')" class="active">Все</span>
+  <span onclick="filterCategory('vegetables')">Овощи</span>
+  <span onclick="filterCategory('plants')">Саженцы</span>
+  <span onclick="filterCategory('trees')">Деревья</span>
+</div>
+
+<div class="filters">
+  <label>Цена от: <input type="number" id="priceMin"></label>
+  <label>до: <input type="number" id="priceMax"></label>
+  <button onclick="filterPrice()">Применить</button>
+</div>
+
+<div class="products" id="products"></div>
+
+<!-- Корзина -->
+<div class="mini-cart" id="miniCart">
+  <h2>Корзина</h2>
+  <div id="cartItems"></div>
+  <div class="checkout" onclick="goCheckout()">
+    Оформить заказ
+  </div>
+  <div class="cart-total">
+    <span>Итого:</span>
+    <span id="cartTotal">0</span> ₸
+  </div>
+</div>
+
+<!-- Плавающая кнопка WhatsApp -->
+<a href="https://wa.me/77006730968?text=Здравствуйте,%20я%20хочу%20оформить%20заказ" 
+   target="_blank" 
+   style="
+      position: fixed; 
+      bottom: 20px; 
+      right: 20px; 
+      z-index: 999; 
+      width: 60px; 
+      height: 60px; 
+      border-radius: 50%; 
+      background: #25D366; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+   "
+   onmouseover="this.style.transform='scale(1.1)';"
+   onmouseout="this.style.transform='scale(1)';"
+>
+  <img src="whatsapp-logo.png" alt="WhatsApp" style="width:35px; height:35px;">
+</a>
+<script src="main.js"></script>
+</body>
+</html>
