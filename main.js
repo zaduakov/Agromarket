@@ -1,14 +1,28 @@
 let products = [
-    { id:1, name:"Саженцы помидоров", price:1500, category:"plants", img:"images/помидоры.webp" },
-    { id:2, name:"Огурцы", price:1200, category:"vegetables", img:"images/огурцы.webp" },
-    { id:3, name:"Яблоня", price:5000, category:"trees", img:"images/яблоня.webp" },
-    { id:4, name:"Персик", price:5000, category:"trees", img:"images/Персик.webp" },
-    { id:5, name:"Красный перец", price:5000, category:"plants", img:"images/Красный перец.webp" },
-    { id:6, name:"Клубника", price:5000, category:"plants", img:"images/Клубника.webp" }
+    { id:1, name:"Саженцы помидоров", price:400, category:"plants", img:"images/помидоры.webp" },
+    { id:2, name:"Огурцы", price:500, category:"plants", img:"images/огурцы.webp" },
+    { id:3, name:"Яблоня", price:2000, category:"trees", img:"images/яблоня.webp" },
+    { id:4, name:"Персик", price:1500, category:"trees", img:"images/Персик.webp" },
+    { id:5, name:"Красный перец", price:900, category:"plants", img:"images/Красный перец.webp" },
+    { id:6, name:"Клубника", price:1300, category:"plants", img:"images/Клубника.webp" },
+    { id:7, name:"Картофель", price:350, category:"vegetables", img:"images/картоп.webp" },
+    { id:8, name:"Лук", price:300, category:"vegetables", img:"images/Лук.webp" },
+    { id:9, name:"Морковь", price:400, category:"vegetables", img:"images/Морковка.webp" },
+    { id:10, name:"Сыр", price:2700, category:"Dairy products", img:"images/сыр.webp" },
+    { id:11, name:"Сыр деревенский", price:3000, category:"plants", img:"images/Сыр деревенский.jpeg" },
+    { id:12, name:"Кефир", price:800, category:"plants", img:"images/Кефир.jpg" },
+    { id:13, name:"Мясо Говядина", price:2700, category:"meat", img:"images/Мясо.webp" },
+    { id:14, name:"Мясо Баранина", price:2500, category:"meat", img:"images/Мясо баранина.jpg" },
+    { id:15, name:"Мясо Куриное", price:2200, category:"meat", img:"images/Курица.webp" },
+    { id:16, name:"Масло", price:900, category:"meat", img:"images/Маслоо.webp" },
+    { id:17, name:"Молоко", price:700, category:"meat", img:"images/Молоко.jpg" }
 ]
   let filteredProducts = [...products];
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   
+  document.getElementById("checkoutBtn").addEventListener("click", () => {
+    window.location.href = "checkout.html";
+  });
   // ===== РЕНДЕР =====
   function render(list){
     const c = document.getElementById("products");
@@ -163,7 +177,57 @@ let products = [
   // ===== СТАРТ =====
   render(products);
   updateCart();
+  // показать через 2 секунды
+setTimeout(() => {
+  document.getElementById("wa-popup").classList.add("show");
+}, 2000);
 
-  function goCheckout(){
-    window.location.href = "checkout.html";
+// закрыть popup
+function closePopup() {
+  document.getElementById("wa-popup").style.display = "none";
+}
+
+// клик по popup → WhatsApp
+document.getElementById("wa-popup").onclick = () => {
+  window.open("https://api.whatsapp.com/send?phone=77006730968&text=Здравствуйте,%20я%20хочу%20заказать", "_blank");
+};
+
+function sendOrderToTelegram() {
+  if (cart.length === 0) {
+    alert("Корзина пуста!");
+    return;
   }
+
+  let token = "8686042743:AAE-Hn4QJmsW5WVLpx7uWBxfZWHEhFHrtr4";
+  let chat_id = "7666224126";
+
+  let message = "🛒 Новый заказ:\n\n";
+  
+  let total = 0;
+
+  cart.forEach(item => {
+    message += `${item.name} (${item.qty} шт) = ${item.price * item.qty}₸\n`;
+    total += item.price * item.qty;
+  });
+
+  message += `\n💰 Итого: ${total}₸`;
+
+  let url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      chat_id: chat_id,
+      text: message
+    })
+  })
+  .then(() => {
+    alert("Заказ отправлен!");
+  })
+  .catch(() => {
+    alert("Ошибка отправки!");
+  });
+}
