@@ -3,63 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Оформление заказа</title>
-<link rel="stylesheet" href="checkout.css">
+<title>AgroMarket Checkout</title>
+
+<style>
+body {
+  margin:0;
+  font-family: 'Segoe UI';
+  background: linear-gradient(135deg, #e8fce8, #ffffff);
+}
+
+.container {
+  max-width: 420px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align:center;
+  color: #2e7d32;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+input {
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  font-size:15px;
+  transition:0.2s;
+}
+
+input:focus {
+  border-color: green;
+  box-shadow: 0 0 5px rgba(0,128,0,0.2);
+  outline:none;
+}
+
+.summary {
+  background:#f6fff6;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
+.item {
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  margin-bottom:5px;
+}
+
+.total {
+  font-weight:bold;
+  margin-top:10px;
+  display:flex;
+  justify-content:space-between;
+}
+
+button {
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:15px;
+  background:linear-gradient(45deg, #4caf50, #2e7d32);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover {
+  transform:scale(1.05);
+}
+
+.success {
+  text-align:center;
+  color:green;
+  margin-top:10px;
+}
+.payment {
+  background:#f6fff6;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
+.pay-option {
+  display:block;
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:8px;
+  cursor:pointer;
+  transition:0.2s;
+  border:1px solid #eee;
+}
+
+.pay-option:hover {
+  background:#e8f5e9;
+}
+</style>
 </head>
+
 <body>
-<header>
-  <h1>Оформление заказа</h1>
-</header>
 
-<main class="checkout-container">
-  <!-- Левый блок: корзина -->
-  <div class="checkout-cart">
-    <h2>Ваша корзина</h2>
-    <div id="cart-items"></div>
-    <div class="cart-total">
-      <span>Итого:</span>
-      <span id="total-price">0 ₸</span>
-    </div>
+<div class="container">
+
+  <h2>🌿 Оформление заказа</h2>
+
+  <div class="summary" id="cartSummary"></div>
+
+  <div class="input-group">
+    <input id="name" placeholder="Имя">
   </div>
 
-  <!-- Правый блок: форма с шагами -->
-  <div class="checkout-form">
-    <h2>Данные для доставки</h2>
-    <div class="progress-bar">
-      <div class="step active">1</div>
-      <div class="step">2</div>
-      <div class="step">3</div>
-    </div>
-
-    <form id="order-form">
-      <div class="step-form active-step">
-        <label>Имя<input type="text" placeholder="Введите имя" required></label>
-        <label>Телефон<input type="tel" placeholder="+7 ___ ___ __ __" required></label>
-        <button type="button" class="btn-next">Далее</button>
-      </div>
-      <div class="step-form">
-        <label>Адрес<input type="text" placeholder="Город, улица, дом" required></label>
-        <label>Способ оплаты
-          <select required>
-            <option value="cash">Наличными</option>
-            <option value="card">Картой</option>
-          </select>
-        </label>
-        <button type="button" class="btn-next">Далее</button>
-      </div>
-      <div class="step-form">
-        <p>Проверьте ваш заказ и нажмите "Подтвердить".</p>
-        <button type="submit" class="btn-submit">Подтвердить</button>
-      </div>
-      <a id="whatsapp-btn" href="#" target="_blank" style="display:none; margin-top:15px; text-decoration:none;">
-        <button style="background:#25D366; color:white; padding:12px; border:none; border-radius:10px; width:100%; font-size:16px; cursor:pointer;">
-          Отправить заказ в WhatsApp
-        </button>
-      </a>
-    </form>
+  <div class="input-group">
+    <input id="phone" placeholder="Телефон">
   </div>
-</main>
+
+  <div class="input-group">
+    <input id="address" placeholder="Адрес">
+  </div>
+
+  <button onclick="sendOrder()">Оформить заказ</button>
+  <div class="payment">
+    <h3>Способ оплаты</h3>
+  
+    <label class="pay-option">
+      <input type="radio" name="payment" value="Kaspi" checked>
+      💳 Kaspi / карта
+    </label>
+  
+    <label class="pay-option">
+      <input type="radio" name="payment" value="Наличные">
+      💵 Наличными при получении
+    </label>
+  
+    <label class="pay-option">
+      <input type="radio" name="payment" value="Перевод">
+      📲 Перевод (WhatsApp)
+    </label>
+  </div>
+  <div class="success" id="successMsg"></div>
+
+</div>
 
 <script src="checkout.js"></script>
+
 </body>
 </html>
