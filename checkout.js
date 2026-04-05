@@ -24,6 +24,8 @@ summaryDiv.innerHTML += `
 
 function sendOrder() {
 
+let payment = document.querySelector('input[name="payment"]:checked').value;
+  
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
   let address = document.getElementById("address").value;
@@ -61,4 +63,3 @@ function sendOrder() {
     alert("Ошибка!");
   });
 }
-let payment = document.querySelector('input[name="payment"]:checked').value;
