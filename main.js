@@ -5,18 +5,22 @@ let products = [
     { id:4, name:"Персик", price:1500, category:"trees", img:"images/Персик.webp" },
     { id:5, name:"Красный перец", price:900, category:"plants", img:"images/Красный перец.webp" },
     { id:6, name:"Клубника", price:1300, category:"plants", img:"images/Клубника.webp" },
-    { id:7, name:"Картофель", price:350, category:"vegetables", img:"images/Картошка.jpg" },
+    { id:7, name:"Картофель", price:350, category:"vegetables", img:"images/картоп.webp" },
     { id:8, name:"Лук", price:300, category:"vegetables", img:"images/Лук.webp" },
     { id:9, name:"Морковь", price:400, category:"vegetables", img:"images/Морковка.webp" },
-    { id:10, name:"Сыр", price:2700, category:"Dairy products", img:"images/Сыр.webp" },
-    { id:11, name:"Сыр деревенский", price:3000, category:"plants", img:"images/Сыр деревенский.jpeg" },
-    { id:12, name:"Кефир", price:800, category:"plants", img:"images/Кефир.jpg" },
+    { id:10, name:"Сыр", price:2700, category:"Dairy products", img:"images/сыр.webp" },
+    { id:11, name:"Сыр деревенский", price:3000, category:"Dairy products", img:"images/Сыр деревенский.jpeg" },
+    { id:12, name:"Кефир", price:800, category:"Dairy products", img:"images/Кефир.jpg" },
     { id:13, name:"Мясо Говядина", price:2700, category:"meat", img:"images/Мясо.webp" },
     { id:14, name:"Мясо Баранина", price:2500, category:"meat", img:"images/Мясо баранина.jpg" },
     { id:15, name:"Мясо Куриное", price:2200, category:"meat", img:"images/Курица.webp" },
-    { id:16, name:"Масло", price:900, category:"meat", img:"images/Маслоо.webp" },
-    { id:17, name:"Молоко", price:700, category:"meat", img:"images/Молоко.jpg" }
-]
+    { id:16, name:"Масло", price:900, category:"Dairy products", img:"images/Маслоо.webp" },
+    { id:17, name:"Молоко", price:700, category:"Dairy products", img:"images/Молоко.jpg" },
+    { id:18, name:"қымыз", price:1500, category:"Dairy products", img:"images/Кумыс.jpg" },
+    { id:19, name:"құрт", price:1000, category:"Dairy products", img:"images/Курт.webp" },
+    { id:20, name:"қымыран", price:1200, category:"Dairy products", img:"images/Кымыран.webp" }
+  ];
+  
   let filteredProducts = [...products];
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   
