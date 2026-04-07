@@ -5,7 +5,7 @@ let products = [
     { id:4, name:"Персик", price:1500, category:"trees", img:"images/Персик.webp" },
     { id:5, name:"Красный перец", price:900, category:"plants", img:"images/Красный перец.webp" },
     { id:6, name:"Клубника", price:1300, category:"plants", img:"images/Клубника.webp" },
-    { id:7, name:"Картофель", price:350, category:"vegetables", img:"images/картоп.webp" },
+    { id:7, name:"Картофель", price:350, category:"vegetables", img:"images/Картошка.jpg" },
     { id:8, name:"Лук", price:300, category:"vegetables", img:"images/Лук.webp" },
     { id:9, name:"Морковь", price:400, category:"vegetables", img:"images/Морковка.webp" },
     { id:10, name:"Сыр", price:2700, category:"Dairy products", img:"images/Сыр.webp" },
