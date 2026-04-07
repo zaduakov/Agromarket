@@ -8,7 +8,7 @@ let products = [
     { id:7, name:"Картофель", price:350, category:"vegetables", img:"images/картоп.webp" },
     { id:8, name:"Лук", price:300, category:"vegetables", img:"images/Лук.webp" },
     { id:9, name:"Морковь", price:400, category:"vegetables", img:"images/Морковка.webp" },
-    { id:10, name:"Сыр", price:2700, category:"Dairy products", img:"images/сыр.webp" },
+    { id:10, name:"Сыр", price:2700, category:"Dairy products", img:"images/Сыр.webp" },
     { id:11, name:"Сыр деревенский", price:3000, category:"Dairy products", img:"images/Сыр деревенский.jpeg" },
     { id:12, name:"Кефир", price:800, category:"Dairy products", img:"images/Кефир.jpg" },
     { id:13, name:"Мясо Говядина", price:2700, category:"meat", img:"images/Мясо.webp" },
